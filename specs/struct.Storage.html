@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Storage` struct in crate `specs`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Storage">
+
+    <title>specs::Storage - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>specs</a></p><script>window.sidebarCurrent = {name: 'Storage', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>specs</a>::<wbr><a class='struct' href=''>Storage</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-62' class='srclink' href='../src/specs/src/storage.rs.html#78-82' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Storage&lt;T, A, D&gt; {
+    // some fields omitted
+}</pre><div class='docblock'><p>A wrapper around the masked storage and the generations vector.
+Can be used for safe lookup of components, insertions and removes.
+This is what <code>World::read/write</code> locks for the user.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;T, A, D&gt; <a class='struct' href='../specs/struct.Storage.html' title='specs::Storage'>Storage</a>&lt;T, A, D&gt; <span class='where'>where A: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html' title='core::ops::Deref'>Deref</a>&lt;Target=Allocator&gt;</span></code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(alloc: A, data: D) -&gt; <a class='struct' href='../specs/struct.Storage.html' title='specs::Storage'>Storage</a>&lt;T, A, D&gt;</code></h4>
+<div class='docblock'><p>Create a new <code>Storage</code></p>
+</div></div><h3 class='impl'><code>impl&lt;T, A, D&gt; <a class='struct' href='../specs/struct.Storage.html' title='specs::Storage'>Storage</a>&lt;T, A, D&gt; <span class='where'>where T: <a class='trait' href='../specs/trait.Component.html' title='specs::Component'>Component</a>, A: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html' title='core::ops::Deref'>Deref</a>&lt;Target=Allocator&gt;, D: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html' title='core::ops::Deref'>Deref</a>&lt;Target=MaskedStorage&lt;T&gt;&gt;</span></code></h3><div class='impl-items'><h4 id='method.get' class='method'><code>fn <a href='#method.get' class='fnname'>get</a>(&amp;self, e: <a class='struct' href='../specs/struct.Entity.html' title='specs::Entity'>Entity</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;T&gt;</code></h4>
+<div class='docblock'><p>Tries to read the data associated with an <code>Entity</code>.</p>
+</div></div><h3 class='impl'><code>impl&lt;T, A, D&gt; <a class='struct' href='../specs/struct.Storage.html' title='specs::Storage'>Storage</a>&lt;T, A, D&gt; <span class='where'>where T: <a class='trait' href='../specs/trait.Component.html' title='specs::Component'>Component</a>, A: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html' title='core::ops::Deref'>Deref</a>&lt;Target=Allocator&gt;, D: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.DerefMut.html' title='core::ops::DerefMut'>DerefMut</a>&lt;Target=MaskedStorage&lt;T&gt;&gt;</span></code></h3><div class='impl-items'><h4 id='method.get_mut' class='method'><code>fn <a href='#method.get_mut' class='fnname'>get_mut</a>(&amp;mut self, e: <a class='struct' href='../specs/struct.Entity.html' title='specs::Entity'>Entity</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;mut T&gt;</code></h4>
+<div class='docblock'><p>Tries to mutate the data associated with an <code>Entity</code>.</p>
+</div><h4 id='method.insert' class='method'><code>fn <a href='#method.insert' class='fnname'>insert</a>(&amp;mut self, e: <a class='struct' href='../specs/struct.Entity.html' title='specs::Entity'>Entity</a>, v: T) -&gt; <a class='enum' href='../specs/enum.InsertResult.html' title='specs::InsertResult'>InsertResult</a>&lt;T&gt;</code></h4>
+<div class='docblock'><p>Inserts new data for a given <code>Entity</code>.
+Returns the result of the operation as a <code>InsertResult&lt;T&gt;</code></p>
+</div><h4 id='method.remove' class='method'><code>fn <a href='#method.remove' class='fnname'>remove</a>(&amp;mut self, e: <a class='struct' href='../specs/struct.Entity.html' title='specs::Entity'>Entity</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;T&gt;</code></h4>
+<div class='docblock'><p>Removes the data associated with an <code>Entity</code>.</p>
+</div><h4 id='method.clear' class='method'><code>fn <a href='#method.clear' class='fnname'>clear</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>Clears the contents of the storage.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl&lt;'a, T, A, D&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Not.html' title='core::ops::Not'>Not</a> for &amp;'a <a class='struct' href='../specs/struct.Storage.html' title='specs::Storage'>Storage</a>&lt;T, A, D&gt; <span class='where'>where T: <a class='trait' href='../specs/trait.Component.html' title='specs::Component'>Component</a>, D: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html' title='core::ops::Deref'>Deref</a>&lt;Target=MaskedStorage&lt;T&gt;&gt;</span></code></h3><div class='impl-items'><h4 id='associatedtype.Output' class='type'><code>type Output = <a class='struct' href='../specs/struct.AntiStorage.html' title='specs::AntiStorage'>AntiStorage</a>&lt;'a&gt;</code></h4>
+<h4 id='method.not' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Not.html#method.not' class='fnname'>not</a>(self) -&gt; Self::<a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Not.html' title='core::ops::Not'>Output</a></code></h4>
+</div><h3 class='impl'><code>impl&lt;'a, T, A, D&gt; <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a> for &amp;'a <a class='struct' href='../specs/struct.Storage.html' title='specs::Storage'>Storage</a>&lt;T, A, D&gt; <span class='where'>where T: <a class='trait' href='../specs/trait.Component.html' title='specs::Component'>Component</a>, A: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html' title='core::ops::Deref'>Deref</a>&lt;Target=Allocator&gt;, D: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html' title='core::ops::Deref'>Deref</a>&lt;Target=MaskedStorage&lt;T&gt;&gt;</span></code></h3><div class='impl-items'><h4 id='associatedtype.Type' class='type'><code>type Type = &amp;'a T</code></h4>
+<h4 id='associatedtype.Value' class='type'><code>type Value = &amp;'a T::Storage</code></h4>
+<h4 id='associatedtype.Mask' class='type'><code>type Mask = &amp;'a BitSet</code></h4>
+<h4 id='method.open' class='method'><code>fn <a href='../specs/trait.Join.html#method.open' class='fnname'>open</a>(self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>Self::<a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Mask</a>, Self::<a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Value</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a></code></h4>
+<h4 id='method.get-1' class='method'><code>unsafe fn <a href='../specs/trait.Join.html#method.get' class='fnname'>get</a>(v: &amp;mut Self::<a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Value</a>, i: <a class='type' href='../specs/type.Index.html' title='specs::Index'>Index</a>) -&gt; &amp;'a T</code></h4>
+<h4 id='method.iter' class='method'><code>fn <a href='../specs/trait.Join.html#method.iter' class='fnname'>iter</a>(self) -&gt; <a class='struct' href='../specs/struct.JoinIter.html' title='specs::JoinIter'>JoinIter</a>&lt;Self&gt; <span class='where'>where Self: <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html' title='core::marker::Sized'>Sized</a></span></code></h4>
+</div><h3 class='impl'><code>impl&lt;'a, T, A, D&gt; <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a> for &amp;'a mut <a class='struct' href='../specs/struct.Storage.html' title='specs::Storage'>Storage</a>&lt;T, A, D&gt; <span class='where'>where T: <a class='trait' href='../specs/trait.Component.html' title='specs::Component'>Component</a>, A: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html' title='core::ops::Deref'>Deref</a>&lt;Target=Allocator&gt;, D: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.DerefMut.html' title='core::ops::DerefMut'>DerefMut</a>&lt;Target=MaskedStorage&lt;T&gt;&gt;</span></code></h3><div class='impl-items'><h4 id='associatedtype.Type-1' class='type'><code>type Type = &amp;'a mut T</code></h4>
+<h4 id='associatedtype.Value-1' class='type'><code>type Value = &amp;'a mut T::Storage</code></h4>
+<h4 id='associatedtype.Mask-1' class='type'><code>type Mask = &amp;'a BitSet</code></h4>
+<h4 id='method.open-1' class='method'><code>fn <a href='../specs/trait.Join.html#method.open' class='fnname'>open</a>(self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>Self::<a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Mask</a>, Self::<a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Value</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a></code></h4>
+<h4 id='method.get-2' class='method'><code>unsafe fn <a href='../specs/trait.Join.html#method.get' class='fnname'>get</a>(v: &amp;mut Self::<a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Value</a>, i: <a class='type' href='../specs/type.Index.html' title='specs::Index'>Index</a>) -&gt; &amp;'a mut T</code></h4>
+<h4 id='method.iter-1' class='method'><code>fn <a href='../specs/trait.Join.html#method.iter' class='fnname'>iter</a>(self) -&gt; <a class='struct' href='../specs/struct.JoinIter.html' title='specs::JoinIter'>JoinIter</a>&lt;Self&gt; <span class='where'>where Self: <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html' title='core::marker::Sized'>Sized</a></span></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "specs";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

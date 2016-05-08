@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Barrier","A `Barrier` can listen for 1 or more `Signals`. It will only transition to a `Pulsed` state once all the `Signals` have `Pulsed`."]]});

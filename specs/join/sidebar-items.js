@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["JoinIter","`JoinIter` is an Iterator over a group of `Storages`."]],"trait":[["Join","The purpose of the `Join` trait is to provide a way to access multiple storages at the same time with the merged bit set."]]});

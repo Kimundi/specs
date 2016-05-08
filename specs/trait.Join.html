@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Join` trait in crate `specs`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Join">
+
+    <title>specs::Join - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>specs</a></p><script>window.sidebarCurrent = {name: 'Join', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content trait">
+<h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>specs</a>::<wbr><a class='trait' href=''>Join</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-971' class='srclink' href='../src/specs/src/join.rs.html#61-76' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait Join {
+    type Type;
+    type Value;
+    type Mask: BitSetLike;
+    fn <a href='#tymethod.open' class='fnname'>open</a>(self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>Self::<a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Mask</a>, Self::<a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Value</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>;
+    unsafe fn <a href='#tymethod.get' class='fnname'>get</a>(&amp;mut Self::<a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Value</a>, <a class='type' href='../specs/type.Index.html' title='specs::Index'>Index</a>) -&gt; Self::<a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Type</a>;
+
+    fn <a href='#method.iter' class='fnname'>iter</a>(self) -&gt; <a class='struct' href='../specs/struct.JoinIter.html' title='specs::JoinIter'>JoinIter</a>&lt;Self&gt; <span class='where'>where Self: <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html' title='core::marker::Sized'>Sized</a></span> { ... }
+}</pre><div class='docblock'><p>The purpose of the <code>Join</code> trait is to provide a way
+to access multiple storages at the same time with
+the merged bit set.</p>
+</div>
+            <h2 id='associated-types'>Associated Types</h2>
+            <div class='methods'>
+        <h3 id='associatedtype.Type' class='method stab '><code>type Type</code></h3><div class='docblock'><p>Type of joined components.</p>
+</div><h3 id='associatedtype.Value' class='method stab '><code>type Value</code></h3><div class='docblock'><p>Type of joined storages.</p>
+</div><h3 id='associatedtype.Mask' class='method stab '><code>type Mask: BitSetLike</code></h3><div class='docblock'><p>Type of joined bit mask.</p>
+</div></div>
+            <h2 id='required-methods'>Required Methods</h2>
+            <div class='methods'>
+        <h3 id='tymethod.open' class='method stab '><code>fn <a href='#tymethod.open' class='fnname'>open</a>(self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>Self::<a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Mask</a>, Self::<a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Value</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a></code></h3><div class='docblock'><p>Open this join by returning the mask and the storages.</p>
+</div><h3 id='tymethod.get' class='method stab '><code>unsafe fn <a href='#tymethod.get' class='fnname'>get</a>(&amp;mut Self::<a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Value</a>, <a class='type' href='../specs/type.Index.html' title='specs::Index'>Index</a>) -&gt; Self::<a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Type</a></code></h3><div class='docblock'><p>Get a joined component value by a gien index.</p>
+</div></div>
+            <h2 id='provided-methods'>Provided Methods</h2>
+            <div class='methods'>
+        <h3 id='method.iter' class='method stab '><code>fn <a href='#method.iter' class='fnname'>iter</a>(self) -&gt; <a class='struct' href='../specs/struct.JoinIter.html' title='specs::JoinIter'>JoinIter</a>&lt;Self&gt; <span class='where'>where Self: <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html' title='core::marker::Sized'>Sized</a></span></code></h3><div class='docblock'><p>Create a joined iterator over the contents.</p>
+</div></div>
+        <h2 id='implementors'>Implementors</h2>
+        <ul class='item-list' id='implementors-list'>
+    <li><code>impl&lt;'a&gt; <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a> for <a class='struct' href='../specs/struct.AntiStorage.html' title='specs::AntiStorage'>AntiStorage</a>&lt;'a&gt;</code></li>
+<li><code>impl&lt;'a, T, A, D&gt; <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a> for &amp;'a <a class='struct' href='../specs/struct.Storage.html' title='specs::Storage'>Storage</a>&lt;T, A, D&gt; <span class='where'>where T: <a class='trait' href='../specs/trait.Component.html' title='specs::Component'>Component</a>, A: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html' title='core::ops::Deref'>Deref</a>&lt;Target=Allocator&gt;, D: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html' title='core::ops::Deref'>Deref</a>&lt;Target=MaskedStorage&lt;T&gt;&gt;</span></code></li>
+<li><code>impl&lt;'a, T, A, D&gt; <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a> for &amp;'a mut <a class='struct' href='../specs/struct.Storage.html' title='specs::Storage'>Storage</a>&lt;T, A, D&gt; <span class='where'>where T: <a class='trait' href='../specs/trait.Component.html' title='specs::Component'>Component</a>, A: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html' title='core::ops::Deref'>Deref</a>&lt;Target=Allocator&gt;, D: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.DerefMut.html' title='core::ops::DerefMut'>DerefMut</a>&lt;Target=MaskedStorage&lt;T&gt;&gt;</span></code></li>
+<li><code>impl&lt;'a&gt; <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a> for &amp;'a <a class='struct' href='../specs/struct.Entities.html' title='specs::Entities'>Entities</a>&lt;'a&gt;</code></li>
+<li><code>impl&lt;'a, A&gt; <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a> for <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A,<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a> <span class='where'>where A: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A::Mask,<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>: BitAnd</span></code></li>
+<li><code>impl&lt;'a, A, B&gt; <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a> for <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A, B<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a> <span class='where'>where A: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, B: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A::Mask, B::Mask<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>: BitAnd</span></code></li>
+<li><code>impl&lt;'a, A, B, C&gt; <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a> for <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A, B, C<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a> <span class='where'>where A: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, B: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, C: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A::Mask, B::Mask, C::Mask<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>: BitAnd</span></code></li>
+<li><code>impl&lt;'a, A, B, C, D&gt; <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a> for <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A, B, C, D<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a> <span class='where'>where A: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, B: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, C: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, D: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A::Mask, B::Mask, C::Mask, D::Mask<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>: BitAnd</span></code></li>
+<li><code>impl&lt;'a, A, B, C, D, E&gt; <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a> for <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A, B, C, D, E<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a> <span class='where'>where A: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, B: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, C: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, D: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, E: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A::Mask, B::Mask, C::Mask, D::Mask, E::Mask<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>: BitAnd</span></code></li>
+<li><code>impl&lt;'a, A, B, C, D, E, F&gt; <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a> for <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A, B, C, D, E, F<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a> <span class='where'>where A: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, B: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, C: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, D: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, E: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, F: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A::Mask, B::Mask, C::Mask, D::Mask, E::Mask, F::Mask<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>: BitAnd</span></code></li>
+<li><code>impl&lt;'a, A, B, C, D, E, F, G&gt; <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a> for <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A, B, C, D, E, F, G<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a> <span class='where'>where A: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, B: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, C: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, D: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, E: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, F: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, G: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A::Mask, B::Mask, C::Mask, D::Mask, E::Mask, F::Mask, G::Mask<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>: BitAnd</span></code></li>
+<li><code>impl&lt;'a, A, B, C, D, E, F, G, H&gt; <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a> for <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A, B, C, D, E, F, G, H<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a> <span class='where'>where A: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, B: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, C: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, D: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, E: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, F: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, G: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, H: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A::Mask, B::Mask, C::Mask, D::Mask, E::Mask, F::Mask, G::Mask, H::Mask<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>: BitAnd</span></code></li>
+<li><code>impl&lt;'a, A, B, C, D, E, F, G, H, I&gt; <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a> for <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A, B, C, D, E, F, G, H, I<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a> <span class='where'>where A: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, B: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, C: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, D: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, E: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, F: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, G: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, H: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, I: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A::Mask, B::Mask, C::Mask, D::Mask, E::Mask, F::Mask, G::Mask, H::Mask, I::Mask<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>: BitAnd</span></code></li>
+<li><code>impl&lt;'a, A, B, C, D, E, F, G, H, I, J&gt; <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a> for <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A, B, C, D, E, F, G, H, I, J<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a> <span class='where'>where A: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, B: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, C: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, D: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, E: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, F: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, G: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, H: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, I: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, J: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A::Mask, B::Mask, C::Mask, D::Mask, E::Mask, F::Mask, G::Mask, H::Mask, I::Mask, J::Mask<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>: BitAnd</span></code></li>
+<li><code>impl&lt;'a, A, B, C, D, E, F, G, H, I, J, K&gt; <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a> for <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A, B, C, D, E, F, G, H, I, J, K<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a> <span class='where'>where A: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, B: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, C: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, D: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, E: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, F: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, G: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, H: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, I: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, J: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, K: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A::Mask, B::Mask, C::Mask, D::Mask, E::Mask, F::Mask, G::Mask, H::Mask, I::Mask, J::Mask, K::Mask<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>: BitAnd</span></code></li>
+<li><code>impl&lt;'a, A, B, C, D, E, F, G, H, I, J, K, L&gt; <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a> for <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A, B, C, D, E, F, G, H, I, J, K, L<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a> <span class='where'>where A: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, B: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, C: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, D: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, E: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, F: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, G: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, H: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, I: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, J: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, K: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, L: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A::Mask, B::Mask, C::Mask, D::Mask, E::Mask, F::Mask, G::Mask, H::Mask, I::Mask, J::Mask, K::Mask, L::Mask<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>: BitAnd</span></code></li>
+<li><code>impl&lt;'a, A, B, C, D, E, F, G, H, I, J, K, L, M&gt; <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a> for <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A, B, C, D, E, F, G, H, I, J, K, L, M<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a> <span class='where'>where A: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, B: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, C: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, D: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, E: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, F: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, G: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, H: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, I: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, J: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, K: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, L: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, M: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A::Mask, B::Mask, C::Mask, D::Mask, E::Mask, F::Mask, G::Mask, H::Mask, I::Mask, J::Mask, K::Mask, L::Mask, M::Mask<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>: BitAnd</span></code></li>
+<li><code>impl&lt;'a, A, B, C, D, E, F, G, H, I, J, K, L, M, N&gt; <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a> for <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A, B, C, D, E, F, G, H, I, J, K, L, M, N<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a> <span class='where'>where A: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, B: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, C: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, D: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, E: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, F: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, G: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, H: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, I: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, J: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, K: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, L: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, M: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, N: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A::Mask, B::Mask, C::Mask, D::Mask, E::Mask, F::Mask, G::Mask, H::Mask, I::Mask, J::Mask, K::Mask, L::Mask, M::Mask, N::Mask<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>: BitAnd</span></code></li>
+<li><code>impl&lt;'a, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O&gt; <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a> for <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A, B, C, D, E, F, G, H, I, J, K, L, M, N, O<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a> <span class='where'>where A: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, B: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, C: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, D: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, E: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, F: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, G: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, H: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, I: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, J: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, K: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, L: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, M: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, N: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, O: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A::Mask, B::Mask, C::Mask, D::Mask, E::Mask, F::Mask, G::Mask, H::Mask, I::Mask, J::Mask, K::Mask, L::Mask, M::Mask, N::Mask, O::Mask<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>: BitAnd</span></code></li>
+<li><code>impl&lt;'a, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P&gt; <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a> for <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a> <span class='where'>where A: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, B: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, C: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, D: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, E: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, F: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, G: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, H: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, I: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, J: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, K: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, L: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, M: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, N: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, O: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, P: <a class='trait' href='../specs/trait.Join.html' title='specs::Join'>Join</a>, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a>A::Mask, B::Mask, C::Mask, D::Mask, E::Mask, F::Mask, G::Mask, H::Mask, I::Mask, J::Mask, K::Mask, L::Mask, M::Mask, N::Mask, O::Mask, P::Mask<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a>: BitAnd</span></code></li>
+</ul><script type="text/javascript" async
+                              src="../implementors/specs/trait.Join.js">
+                      </script></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "specs";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `specs` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, specs">
+
+    <title>specs - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'specs', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>specs</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-0' class='srclink' href='../src/specs/src/lib.rs.html#1-288' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'>
+<h1 id='specs-parallel-ecs' class='section-header'><a href='#specs-parallel-ecs'>SPECS Parallel ECS</a></h1>
+<p>This library provides an ECS variant designed for parallel execution
+and convenient usage. It is highly flexible when it comes to actual
+component data and the way it is stored and accessed.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.AntiStorage.html'
+                               title='specs::AntiStorage'>AntiStorage</a></td>
+                        <td class='docblock short'>
+                             <p>An inverted storage type, only useful to iterate entities
+that do not have a particular component type.</p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.CreateEntities.html'
+                               title='specs::CreateEntities'>CreateEntities</a></td>
+                        <td class='docblock short'>
+                             <p>Entity creation iterator. Will yield new empty entities infinitely.
+Useful for bulk entity construction, since the locks are only happening once.</p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Entities.html'
+                               title='specs::Entities'>Entities</a></td>
+                        <td class='docblock short'>
+                             <p>A custom entity guard used to hide the the fact that Generations
+is lazily created and updated. For this to be useful it <em>must</em>
+be joined with a component. This is because the Generation table
+includes every possible Generation of Entities even if they
+have never been</p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Entity.html'
+                               title='specs::Entity'>Entity</a></td>
+                        <td class='docblock short'>
+                             <p><code>Entity</code> type, as seen by the user.</p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.EntityBuilder.html'
+                               title='specs::EntityBuilder'>EntityBuilder</a></td>
+                        <td class='docblock short'>
+                             <p>Helper builder for entities.</p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Generation.html'
+                               title='specs::Generation'>Generation</a></td>
+                        <td class='docblock short'>
+                             <p>Index generation. When a new entity is placed at an old index,
+it bumps the <code>Generation</code> by 1. This allows to avoid using components
+from the entities that were deleted.</p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.HashMapStorage.html'
+                               title='specs::HashMapStorage'>HashMapStorage</a></td>
+                        <td class='docblock short'>
+                             <p>HashMap-based storage. Best suited for rare components.</p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.JoinIter.html'
+                               title='specs::JoinIter'>JoinIter</a></td>
+                        <td class='docblock short'>
+                             <p><code>JoinIter</code> is an Iterator over a group of <code>Storages</code>.</p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.NullStorage.html'
+                               title='specs::NullStorage'>NullStorage</a></td>
+                        <td class='docblock short'>
+                             <p>A null storage type, used for cases where the component
+doesn&#39;t contain any data and instead works as a simple flag.</p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Planner.html'
+                               title='specs::Planner'>Planner</a></td>
+                        <td class='docblock short'>
+                             <p>System execution planner. Allows running systems via closures,
+distributes the load in parallel using a thread pool.</p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.RunArg.html'
+                               title='specs::RunArg'>RunArg</a></td>
+                        <td class='docblock short'>
+                             <p>System closure run-time argument.</p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Storage.html'
+                               title='specs::Storage'>Storage</a></td>
+                        <td class='docblock short'>
+                             <p>A wrapper around the masked storage and the generations vector.
+Can be used for safe lookup of components, insertions and removes.
+This is what <code>World::read/write</code> locks for the user.</p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.SystemInfo.html'
+                               title='specs::SystemInfo'>SystemInfo</a></td>
+                        <td class='docblock short'>
+                             <p>System information package, where the system itself is accompanied
+by its name and priority.</p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.VecStorage.html'
+                               title='specs::VecStorage'>VecStorage</a></td>
+                        <td class='docblock short'>
+                             <p>Vec-based storage, stores the generations of the data in
+order to match with given entities. Supposed to have maximum
+performance for the components mostly present in entities.</p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.World.html'
+                               title='specs::World'>World</a></td>
+                        <td class='docblock short'>
+                             <p>The <code>World</code> struct contains all the data, which is entities and their components.
+All methods are supposed to be valid for any context they are available in.</p>
+                        </td>
+                    </tr>
+                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.InsertResult.html'
+                               title='specs::InsertResult'>InsertResult</a></td>
+                        <td class='docblock short'>
+                             <p>the status of an insert operation</p>
+                        </td>
+                    </tr>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='trait' href='trait.Component.html'
+                               title='specs::Component'>Component</a></td>
+                        <td class='docblock short'>
+                             <p>Abstract component type. Doesn&#39;t have to be Copy or even Clone.</p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='trait' href='trait.Join.html'
+                               title='specs::Join'>Join</a></td>
+                        <td class='docblock short'>
+                             <p>The purpose of the <code>Join</code> trait is to provide a way
+to access multiple storages at the same time with
+the merged bit set.</p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='trait' href='trait.System.html'
+                               title='specs::System'>System</a></td>
+                        <td class='docblock short'>
+                             <p>Generic system that runs through the entities and do something
+with their components, with an ability to add new entities and
+delete existing ones.</p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='trait' href='trait.UnprotectedStorage.html'
+                               title='specs::UnprotectedStorage'>UnprotectedStorage</a></td>
+                        <td class='docblock short'>
+                             <p>Used by the framework to quickly join componets</p>
+                        </td>
+                    </tr>
+                </table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.Index.html'
+                               title='specs::Index'>Index</a></td>
+                        <td class='docblock short'>
+                             <p><code>Index</code> type is arbitrary. It doesn&#39;t show up in any interfaces.
+Keeping it 32bit allows for a single 64bit word per entity.</p>
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.Priority.html'
+                               title='specs::Priority'>Priority</a></td>
+                        <td class='docblock short'>
+                             <p>System scheduling priority. Higehr priority systems are started
+earlier than lower-priority ones.</p>
+                        </td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "specs";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script defer src="../search-index.js"></script>
+</body>
+</html>
